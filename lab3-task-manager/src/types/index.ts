@@ -13,7 +13,7 @@ export interface Task {
   title: string;
   description: string;
   status: TaskStatus;
-  priority: Task;
+  priority: TaskPriority;
   dueDate: string;
 }
 // Define the props for the TaskList component
