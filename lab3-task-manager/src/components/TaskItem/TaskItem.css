@@ -1,0 +1,23 @@
+.priorty.low {
+  color: green;
+}
+
+.priority.medium {
+  color: orange;
+}
+
+.priority.high {
+  color: red;
+}
+
+.status.pending {
+  color: goldenrod;
+}
+
+.status-select.in-progress {
+  color: royalblue;
+}
+
+.status-select.completed {
+  color: seagreen;
+}
