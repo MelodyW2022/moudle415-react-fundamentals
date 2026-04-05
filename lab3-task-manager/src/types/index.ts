@@ -21,6 +21,7 @@ export interface TaskListProps {
   tasks: Task[];
   onStatusChange: (taskId: string, newStatus: TaskStatus) => void;
   onDelete: (taskId: string) => void;
+  onSortByDate: () => void;
 }
 
 // Define the props for the TaskItem component

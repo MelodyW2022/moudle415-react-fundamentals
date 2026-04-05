@@ -1,0 +1,13 @@
+.sort-button {
+  margin-bottom: 20px;
+  padding: 10px 14px;
+  border-radius: 10px;
+  border: 1px solid #24314a;
+  background: #1f2a3d;
+  color: #e5e7eb;
+  cursor: pointer;
+}
+
+.sort-button:hover {
+  opacity: 0.9;
+}

@@ -1,21 +1,29 @@
 import type { TaskListProps } from "../../types";
 import { TaskItem } from "../TaskItem/TaskItem";
-
-export function TaskList({ tasks, onStatusChange, onDelete }: TaskListProps) {
-  // If there are no tasks, display a message
-  if (tasks.length === 0) {
-    return <p>No tasks found</p>;
-  }
+import "./TaskList.css";
+export function TaskList({
+  tasks,
+  onStatusChange,
+  onDelete,
+  onSortByDate,
+}: TaskListProps) {
   return (
     <div>
-      {tasks.map((task) => (
-        <TaskItem
-          key={task.id}
-          task={task}
-          onStatusChange={onStatusChange}
-          onDelete={onDelete}
-        />
-      ))}
+      <button className="sort-button" onClick={onSortByDate}>
+        Sort by Due Date
+      </button>
+      {tasks.length === 0 ? (
+        <p>No tasks found</p>
+      ) : (
+        tasks.map((task) => (
+          <TaskItem
+            key={task.id}
+            task={task}
+            onStatusChange={onStatusChange}
+            onDelete={onDelete}
+          />
+        ))
+      )}
     </div>
   );
 }

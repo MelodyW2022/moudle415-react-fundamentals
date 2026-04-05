@@ -64,6 +64,13 @@ function App() {
       : true;
     return matchesStatus && matchesPriority;
   });
+  function handleSortByDate() {
+    setTasks((prevTasks) =>
+      [...prevTasks].sort(
+        (a, b) => new Date(a.dueDate).getTime() - new Date(b.dueDate).getTime(),
+      ),
+    );
+  }
 
   return (
     <>
@@ -72,6 +79,7 @@ function App() {
         tasks={filteredTasks}
         onStatusChange={handleStatusChange}
         onDelete={handleDelete}
+        onSortByDate={handleSortByDate}
       />
     </>
   );
