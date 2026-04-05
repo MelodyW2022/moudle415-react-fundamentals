@@ -1,33 +1,115 @@
-.priorty.low {
-  color: green;
+.task-item {
+  border: 1px solid #2a3550;
+  border-radius: 14px;
+  padding: 30px 24px;
+  margin-bottom: 22px;
+  background-color: #111;
+  transition:
+    background-color 0.2s ease,
+    border-color 0.2s ease,
+    box-shadow 0.2s ease;
+}
+
+.task-item:hover {
+  background-color: #161616;
+  border-color: #43506a;
+  box-shadow: 0 4px 12px rgba(0, 0, 0, 0.2);
+}
+
+.task-item-header {
+  display: flex;
+  justify-content: space-between;
+  align-items: flex-start;
+  gap: 16px;
+}
+
+.task-item-info h3 {
+  margin: 0 0 18px;
+  font-size: 22px;
+  font-weight: 700;
+  color: #f3f4f6;
+}
+
+.task-item-info p {
+  margin: 0 0 24px;
+  color: #7f879b;
+  font-size: 16px;
+}
+
+.task-item-actions {
+  display: flex;
+  align-items: center;
+  gap: 20px;
+}
+
+.task-item-meta {
+  display: flex;
+  gap: 24px;
+  margin-top: 6px;
+  font-size: 16px;
+}
+
+.task-item-meta p {
+  margin: 0;
+}
+
+.priority {
+  font-weight: 600;
+}
+
+.priority.low {
+  color: #22c55e;
 }
 
 .priority.medium {
-  color: orange;
+  color: #f59e0b;
 }
 
 .priority.high {
-  color: red;
+  color: #ef4444;
+}
+
+.status {
+  min-width: 118px;
+  padding: 10px 16px;
+  border-radius: 10px;
+  border: 1px solid transparent;
+  font-size: 16px;
+  font-weight: 500;
 }
 
 .status.pending {
-  color: goldenrod;
+  color: #9a6b00;
+  background: #fff7d6;
 }
 
-.status-select.in-progress {
-  color: royalblue;
+.status.in-progress {
+  color: #3450d1;
+  background: #f5f7ff;
 }
 
-.status-select.completed {
-  color: seagreen;
+.status.completed {
+  color: #2f7a49;
+  background: #f5fff8;
 }
 
 .delete-button {
-  color: red;
+  color: #ff3b30;
   cursor: pointer;
   border: none;
   background: transparent;
+  font-size: 16px;
+  font-weight: 500;
+  padding: 0;
+  transition:
+    opacity 0.2s ease,
+    transform 0.1s ease;
 }
+
 .delete-button:hover {
   opacity: 0.8;
+}
+
+.delete-button:active {
+  transform: scale(0.97);
 }

@@ -7,7 +7,32 @@ import type { Task, TaskFilters, TaskStatus } from "./types";
 function App() {
   // const [count, setCount] = useState(0)
   //task state
-  const [tasks, setTasks] = useState<Task[]>([]);
+  const [tasks, setTasks] = useState<Task[]>([
+    {
+      id: "1",
+      title: "Task 1",
+      description: "Description 1",
+      status: "pending",
+      priority: "low",
+      dueDate: "2026-04-04",
+    },
+    {
+      id: "2",
+      title: "Task 2",
+      description: "Description 2",
+      status: "in-progress",
+      priority: "medium",
+      dueDate: "2026-04-01",
+    },
+    {
+      id: "3",
+      title: "Task 3",
+      description: "Description 3",
+      status: "completed",
+      priority: "high",
+      dueDate: "2026-04-02",
+    },
+  ]);
   //filter state
   const [filters, setFilters] = useState<TaskFilters>({});
   //handleFilterChange

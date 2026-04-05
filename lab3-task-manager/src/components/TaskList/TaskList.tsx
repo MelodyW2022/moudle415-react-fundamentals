@@ -8,7 +8,6 @@ export function TaskList({ tasks, onStatusChange, onDelete }: TaskListProps) {
   }
   return (
     <div>
-      //
       {tasks.map((task) => (
         <TaskItem
           key={task.id}
