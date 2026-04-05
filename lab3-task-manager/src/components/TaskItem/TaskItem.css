@@ -21,3 +21,13 @@
 .status-select.completed {
   color: seagreen;
 }
+
+.delete-button {
+  color: red;
+  cursor: pointer;
+  border: none;
+  background: transparent;
+}
+.delete-button:hover {
+  opacity: 0.8;
+}

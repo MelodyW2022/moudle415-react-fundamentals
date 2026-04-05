@@ -22,7 +22,9 @@ export function TaskItem({ task, onStatusChange, onDelete }: TaskItemProps) {
       {task.status === "completed" && <p>Completed</p>}
       <p className={`priority ${task.priority}`}>Priority: {task.priority}</p>
       <p>Due Date: {task.dueDate}</p>
-      <button onClick={() => onDelete(task.id)}>Delete</button>
+      <button className="delete-button" onClick={() => onDelete(task.id)}>
+        Delete
+      </button>
     </div>
   );
 }
