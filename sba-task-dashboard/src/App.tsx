@@ -1,121 +1,92 @@
-import { useState } from 'react'
-import reactLogo from './assets/react.svg'
-import viteLogo from './assets/vite.svg'
-import heroImg from './assets/hero.png'
-import './App.css'
+import { useState } from "react";
+import "./App.css";
+import { TaskFilter } from "./components/TaskFilter/TaskFilter";
+import { TaskList } from "./components/TaskList/TaskList";
+import type { Task, TaskFilters, TaskStatus } from "./types";
 
 function App() {
-  const [count, setCount] = useState(0)
+  const [tasks, setTasks] = useState<Task[]>([
+    {
+      id: "1",
+      title: "Build dashboard layout",
+      description: "Create the core dashboard sections and responsive layout.",
+      status: "pending",
+      priority: "high",
+      dueDate: "2026-04-12",
+    },
+    {
+      id: "2",
+      title: "Add task filtering",
+      description: "Reuse Lab 3 filter logic for status and priority.",
+      status: "in-progress",
+      priority: "medium",
+      dueDate: "2026-04-10",
+    },
+    {
+      id: "3",
+      title: "Write README notes",
+      description: "Document setup steps and the project structure.",
+      status: "completed",
+      priority: "low",
+      dueDate: "2026-04-09",
+    },
+  ]);
+
+  const [filters, setFilters] = useState<TaskFilters>({});
+
+  function handleFilterChange(newFilters: TaskFilters) {
+    setFilters(newFilters);
+  }
+
+  function handleStatusChange(taskId: string, newStatus: TaskStatus) {
+    setTasks((prevTasks) =>
+      prevTasks.map((task) =>
+        task.id === taskId ? { ...task, status: newStatus } : task,
+      ),
+    );
+  }
+
+  function handleDelete(taskId: string) {
+    setTasks((prevTasks) => prevTasks.filter((task) => task.id !== taskId));
+  }
+
+  function handleSortByDate() {
+    setTasks((prevTasks) =>
+      [...prevTasks].sort(
+        (a, b) => new Date(a.dueDate).getTime() - new Date(b.dueDate).getTime(),
+      ),
+    );
+  }
+
+  const filteredTasks = tasks.filter((task) => {
+    const matchesStatus = filters.status ? task.status === filters.status : true;
+    const matchesPriority = filters.priority
+      ? task.priority === filters.priority
+      : true;
+
+    return matchesStatus && matchesPriority;
+  });
 
   return (
-    <>
-      <section id="center">
-        <div className="hero">
-          <img src={heroImg} className="base" width="170" height="179" alt="" />
-          <img src={reactLogo} className="framework" alt="React logo" />
-          <img src={viteLogo} className="vite" alt="Vite logo" />
-        </div>
-        <div>
-          <h1>Get started</h1>
-          <p>
-            Edit <code>src/App.tsx</code> and save to test <code>HMR</code>
-          </p>
-        </div>
-        <button
-          className="counter"
-          onClick={() => setCount((count) => count + 1)}
-        >
-          Count is {count}
-        </button>
+    <main className="app-shell">
+      <section className="app-header">
+        <p className="eyebrow">SBA Task Dashboard</p>
+        <h1>Task Management Dashboard</h1>
+        <p className="intro">
+          This first pass reuses the core Lab 3 features: filtering, task
+          status updates, deletion, and due-date sorting.
+        </p>
       </section>
 
-      <div className="ticks"></div>
-
-      <section id="next-steps">
-        <div id="docs">
-          <svg className="icon" role="presentation" aria-hidden="true">
-            <use href="/icons.svg#documentation-icon"></use>
-          </svg>
-          <h2>Documentation</h2>
-          <p>Your questions, answered</p>
-          <ul>
-            <li>
-              <a href="https://vite.dev/" target="_blank">
-                <img className="logo" src={viteLogo} alt="" />
-                Explore Vite
-              </a>
-            </li>
-            <li>
-              <a href="https://react.dev/" target="_blank">
-                <img className="button-icon" src={reactLogo} alt="" />
-                Learn more
-              </a>
-            </li>
-          </ul>
-        </div>
-        <div id="social">
-          <svg className="icon" role="presentation" aria-hidden="true">
-            <use href="/icons.svg#social-icon"></use>
-          </svg>
-          <h2>Connect with us</h2>
-          <p>Join the Vite community</p>
-          <ul>
-            <li>
-              <a href="https://github.com/vitejs/vite" target="_blank">
-                <svg
-                  className="button-icon"
-                  role="presentation"
-                  aria-hidden="true"
-                >
-                  <use href="/icons.svg#github-icon"></use>
-                </svg>
-                GitHub
-              </a>
-            </li>
-            <li>
-              <a href="https://chat.vite.dev/" target="_blank">
-                <svg
-                  className="button-icon"
-                  role="presentation"
-                  aria-hidden="true"
-                >
-                  <use href="/icons.svg#discord-icon"></use>
-                </svg>
-                Discord
-              </a>
-            </li>
-            <li>
-              <a href="https://x.com/vite_js" target="_blank">
-                <svg
-                  className="button-icon"
-                  role="presentation"
-                  aria-hidden="true"
-                >
-                  <use href="/icons.svg#x-icon"></use>
-                </svg>
-                X.com
-              </a>
-            </li>
-            <li>
-              <a href="https://bsky.app/profile/vite.dev" target="_blank">
-                <svg
-                  className="button-icon"
-                  role="presentation"
-                  aria-hidden="true"
-                >
-                  <use href="/icons.svg#bluesky-icon"></use>
-                </svg>
-                Bluesky
-              </a>
-            </li>
-          </ul>
-        </div>
-      </section>
-
-      <div className="ticks"></div>
-      <section id="spacer"></section>
-    </>
-  )
+      <TaskFilter onFilterChange={handleFilterChange} />
+      <TaskList
+        tasks={filteredTasks}
+        onStatusChange={handleStatusChange}
+        onDelete={handleDelete}
+        onSortByDate={handleSortByDate}
+      />
+    </main>
+  );
 }
 
-export default App
+export default App;
