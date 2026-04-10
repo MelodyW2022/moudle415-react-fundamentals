@@ -1,4 +1,6 @@
 .sort-button {
+  /* The button is functional, but it stands alone instead of living inside a
+     toolbar/header section like the SBA version. */
   margin-bottom: 20px;
   padding: 10px 14px;
   border-radius: 10px;

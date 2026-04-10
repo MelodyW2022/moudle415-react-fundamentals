@@ -1,4 +1,6 @@
 .task-item {
+  /* Each task already has solid card structure here, which is one of the
+     strongest parts of the Lab 3 UI. */
   border: 1px solid #2a3550;
   border-radius: 14px;
   padding: 30px 24px;
@@ -17,6 +19,7 @@
 }
 
 .task-item-header {
+  /* Flex layout keeps task text and actions separated clearly. */
   display: flex;
   justify-content: space-between;
   align-items: flex-start;
@@ -54,6 +57,8 @@
 }
 
 .priority {
+  /* Priority is communicated with text color only, while the SBA version makes
+     this metadata easier to spot by turning it into a badge. */
   font-weight: 600;
 }
 
@@ -70,6 +75,8 @@
 }
 
 .status {
+  /* Status uses colored select backgrounds, which gives good feedback even in
+     the simpler Lab 3 design. */
   min-width: 118px;
   padding: 10px 16px;
   border-radius: 10px;
@@ -94,6 +101,8 @@
 }
 
 .delete-button {
+  /* The delete action is visible, but the plain red text feels harsher and less
+     integrated than the shared button styling in the SBA version. */
   color: #ff3b30;
   cursor: pointer;
   border: none;

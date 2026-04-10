@@ -1,4 +1,6 @@
 .task-filter {
+  /* This lays the controls out cleanly, but it does not wrap them in a panel,
+     so the filters feel more floating than the SBA dashboard filters. */
   display: flex;
   gap: 28px;
   align-items: flex-start;
@@ -18,6 +20,8 @@
 }
 
 .filter-group select {
+  /* Dark inputs match the Lab 3 theme, though the SBA version softens these
+     controls and unifies them with the rest of the page. */
   min-width: 180px;
   padding: 12px 14px;
   border-radius: 10px;
