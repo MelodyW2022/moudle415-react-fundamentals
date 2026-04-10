@@ -70,12 +70,7 @@ function App() {
   return (
     <main className="app-shell">
       <section className="app-header">
-        <p className="eyebrow">SBA Task Dashboard</p>
         <h1>Task Management Dashboard</h1>
-        <p className="intro">
-          This first pass reuses the core Lab 3 features: filtering, task
-          status updates, deletion, and due-date sorting.
-        </p>
       </section>
 
       <TaskFilter onFilterChange={handleFilterChange} />

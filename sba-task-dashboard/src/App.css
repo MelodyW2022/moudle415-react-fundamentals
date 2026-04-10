@@ -183,6 +183,7 @@
   }
 }
 .app-shell {
+  /* Centers the dashboard and prevents the content from stretching too wide. */
   max-width: 960px;
   margin: 0 auto;
   padding: 48px 20px 64px;
@@ -192,28 +193,16 @@
   margin-bottom: 24px;
 }
 
-.eyebrow {
-  margin: 0 0 8px;
-  text-transform: uppercase;
-  letter-spacing: 0.08em;
-  font-size: 0.85rem;
-  font-weight: 700;
-  color: #0f766e;
-}
-
 .app-header h1 {
   margin: 0;
+  /* A larger headline creates stronger visual hierarchy right away. */
   font-size: clamp(2rem, 4vw, 3.25rem);
   line-height: 1.05;
 }
 
-.intro {
-  max-width: 680px;
-  color: #475569;
-}
-
 .task-filter-panel,
 .task-list-panel {
+  /* Matching panel styles make the filter and list feel like one system. */
   background: #ffffff;
   border: 1px solid #dbe4ee;
   border-radius: 18px;
@@ -221,6 +210,7 @@
 }
 
 .task-filter-panel {
+  /* Grid keeps the controls aligned and responsive without much code. */
   display: grid;
   grid-template-columns: repeat(auto-fit, minmax(180px, 1fr));
   gap: 16px;
@@ -247,6 +237,7 @@
 
 .filter-group select,
 .task-card-actions select {
+  /* Shared input styling makes the controls feel consistent and polished. */
   padding: 10px 12px;
   border: 1px solid #cbd5e1;
   border-radius: 10px;
@@ -271,6 +262,7 @@
 
 .task-list-toolbar button,
 .task-card-actions button {
+  /* Pill buttons and a single accent color help actions stand out cleanly. */
   border: 0;
   border-radius: 999px;
   padding: 10px 14px;
@@ -285,6 +277,7 @@
 }
 
 .task-card {
+  /* Each task gets its own soft card so the list is easier to scan. */
   padding: 18px;
   border: 1px solid #e2e8f0;
   border-radius: 16px;
@@ -322,6 +315,7 @@
 }
 
 .priority-badge {
+  /* Turning priority into a badge makes metadata easier to notice at a glance. */
   display: inline-flex;
   align-items: center;
   padding: 6px 10px;
