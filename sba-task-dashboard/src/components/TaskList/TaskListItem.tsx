@@ -1,4 +1,5 @@
 import type { TaskListItemProps, TaskStatus } from "../../types";
+import { formatDate } from "../../utils/taskUtils";
 
 export function TaskListItem({
   task,
@@ -35,7 +36,7 @@ export function TaskListItem({
         <span className={`priority-badge ${task.priority}`}>
           Priority: {task.priority}
         </span>
-        <span>Due: {task.dueDate}</span>
+        <span>Due: {formatDate(task.dueDate)}</span>
       </div>
     </article>
   );
