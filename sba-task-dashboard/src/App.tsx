@@ -3,6 +3,7 @@ import "./App.css";
 import { TaskFilter } from "./components/TaskFilter/TaskFilter";
 import { TaskList } from "./components/TaskList/TaskList";
 import type { Task, TaskFilters, TaskStatus } from "./types";
+import { filterTasks, sortTasksByDate } from "./utils/taskUtils";
 
 function App() {
   const [tasks, setTasks] = useState<Task[]>([
@@ -51,21 +52,10 @@ function App() {
   }
 
   function handleSortByDate() {
-    setTasks((prevTasks) =>
-      [...prevTasks].sort(
-        (a, b) => new Date(a.dueDate).getTime() - new Date(b.dueDate).getTime(),
-      ),
-    );
+    setTasks((prevTasks) => sortTasksByDate(prevTasks));
   }
 
-  const filteredTasks = tasks.filter((task) => {
-    const matchesStatus = filters.status ? task.status === filters.status : true;
-    const matchesPriority = filters.priority
-      ? task.priority === filters.priority
-      : true;
-
-    return matchesStatus && matchesPriority;
-  });
+  const filteredTasks = filterTasks(tasks, filters);
 
   return (
     <main className="app-shell">
