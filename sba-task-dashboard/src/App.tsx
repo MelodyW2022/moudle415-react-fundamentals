@@ -2,8 +2,9 @@ import { useState } from "react";
 import "./App.css";
 import { TaskFilter } from "./components/TaskFilter/TaskFilter";
 import { TaskList } from "./components/TaskList/TaskList";
-import type { Task, TaskFilters, TaskStatus } from "./types";
+import type { Task, TaskFilters, TaskFormData, TaskStatus } from "./types";
 import { filterTasks, sortTasksByDate } from "./utils/taskUtils";
+import { TaskForm } from "./components/TaskForm/TaskForm";
 
 function App() {
   const [tasks, setTasks] = useState<Task[]>([
@@ -57,12 +58,20 @@ function App() {
 
   const filteredTasks = filterTasks(tasks, filters);
 
+  function handleAddTask(taskData: TaskFormData) {
+    const newTask: Task = {
+      id: crypto.randomUUID(),
+      ...taskData,
+    };
+    setTasks((prev) => [newTask, ...prev]);
+  }
+
   return (
     <main className="app-shell">
       <section className="app-header">
         <h1>Task Management Dashboard</h1>
       </section>
-
+      <TaskForm onSubmit={handleAddTask} />
       <TaskFilter onFilterChange={handleFilterChange} />
       <TaskList
         tasks={filteredTasks}

@@ -67,5 +67,3 @@ export function TaskFilter({ onFilterChange }: TaskFilterProps) {
     </section>
   );
 }
-
-export default TaskFilter;

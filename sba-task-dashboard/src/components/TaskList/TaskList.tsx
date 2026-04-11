@@ -33,5 +33,3 @@ export function TaskList({
     </section>
   );
 }
-
-export default TaskList;
