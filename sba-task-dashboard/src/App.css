@@ -200,6 +200,7 @@
   line-height: 1.05;
 }
 
+.task-form-panel,
 .task-filter-panel,
 .task-list-panel {
   /* Matching panel styles make the filter and list feel like one system. */
@@ -207,6 +208,39 @@
   border: 1px solid #dbe4ee;
   border-radius: 18px;
   box-shadow: 0 20px 40px -32px rgba(15, 23, 42, 0.45);
+}
+
+.task-form-panel {
+  margin-bottom: 20px;
+  padding: 20px;
+}
+
+.task-form-panel h2 {
+  margin: 0 0 16px;
+}
+
+.task-form {
+  /* A responsive grid makes the form feel structured instead of stacked randomly. */
+  display: grid;
+  grid-template-columns: repeat(2, minmax(0, 1fr));
+  gap: 16px;
+}
+
+.task-form .form-group {
+  display: flex;
+  flex-direction: column;
+  gap: 8px;
+}
+
+.task-form .form-group:first-child,
+.task-form .form-group:nth-child(2),
+.task-form button {
+  grid-column: 1 / -1;
+}
+
+.task-form label {
+  font-weight: 600;
+  color: #1e293b;
 }
 
 .task-filter-panel {
@@ -228,13 +262,20 @@
   font-weight: 600;
 }
 
+.task-form input,
+.task-form textarea,
+.task-form select,
 .filter-group select,
 .task-card-actions select,
 .task-list-toolbar button,
-.task-card-actions button {
+.task-card-actions button,
+.task-form button {
   font: inherit;
 }
 
+.task-form input,
+.task-form textarea,
+.task-form select,
 .filter-group select,
 .task-card-actions select {
   /* Shared input styling makes the controls feel consistent and polished. */
@@ -242,6 +283,27 @@
   border: 1px solid #cbd5e1;
   border-radius: 10px;
   background: #f8fafc;
+}
+
+.task-form textarea {
+  /* Slight extra height gives the description field room without overpowering the panel. */
+  min-height: 110px;
+  resize: vertical;
+}
+
+.task-form input:focus,
+.task-form textarea:focus,
+.task-form select:focus,
+.filter-group select:focus,
+.task-card-actions select:focus {
+  outline: 2px solid rgba(15, 118, 110, 0.18);
+  border-color: #0f766e;
+}
+
+.error-message {
+  margin: 0;
+  color: #b91c1c;
+  font-size: 0.9rem;
 }
 
 .task-list-panel {
@@ -261,7 +323,8 @@
 }
 
 .task-list-toolbar button,
-.task-card-actions button {
+.task-card-actions button,
+.task-form button {
   /* Pill buttons and a single accent color help actions stand out cleanly. */
   border: 0;
   border-radius: 999px;
@@ -269,6 +332,10 @@
   background: #0f766e;
   color: #ffffff;
   cursor: pointer;
+}
+
+.task-form button {
+  justify-self: start;
 }
 
 .task-list {
@@ -347,6 +414,18 @@
 @media (max-width: 640px) {
   .app-shell {
     padding: 32px 16px 48px;
+  }
+
+  .task-form {
+    grid-template-columns: 1fr;
+  }
+
+  .task-form .form-group,
+  .task-form button,
+  .task-list-toolbar,
+  .task-card-header,
+  .task-card-actions {
+    grid-column: auto;
   }
 
   .task-list-toolbar,
